@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Guangyu">
+  
+  
+  
+  
+  
+  <link rel="canonical" href="https://gm3g11.github.io/2020/vgg-research/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           VGG Research | Guangyu&#39;s Blog
+       
+  </title>
+  <meta name="title" content="VGG Research | Guangyu&#39;s Blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/gm3g11.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "VGG Research",
+    "headline" : "VGG Research",
+    "description" : "Research on \u0026ldquo;Very deep convolutional networks for large-scale image recognition \u0026quot; (VGG) 作业内容： 1：文字回答：VGG中3个33卷积相对于1个77卷积，在参数上较少了百分之多少？（假设输入和输出通道数均为",
+    "inLanguage" : "zh-cn",
+    "author" : "Guangyu",
+    "creator" : "Guangyu",
+    "publisher": "Guangyu",
+    "accountablePerson" : "Guangyu",
+    "copyrightHolder" : "Guangyu",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-28 23:58:36 -0500 CDT",
+    "dateModified" : "2020-06-28 23:58:36 -0500 CDT",
+    "url" : "https:\/\/gm3g11.github.io\/2020\/vgg-research\/",
+    "wordCount" : "1058",
+    "keywords" : [  "Guangyu\u0027s Blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://gm3g11.github.io/">Guangyu&#39;s Blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://gm3g11.github.io/">Guangyu&#39;s Blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">VGG Research</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://gm3g11.github.io/" rel="author">Guangyu</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-28 itemprop="datePublished">June 28, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="research-on-very-deep-convolutional-networks-for-large-scale-image-recognition--vgg">Research on &ldquo;Very deep convolutional networks for large-scale image recognition &quot; (VGG)</h1>
+<h4 id="作业内容"><strong>作业内容</strong>：</h4>
+<h5 id="1文字回答vgg中3个33卷积相对于1个77卷积在参数上较少了百分之多少假设输入和输出通道数均为c">1：文字回答：VGG中3个3<em>3卷积相对于1个7</em>7卷积，在参数上较少了百分之多少？（假设输入和输出通道数均为C）</h5>
+<p>参数减少了$(7^2-3\times3^2)/7^2=44.9% $</p>
+<p>2：文字回答：VGG-16和VGG-19差别在哪？</p>
+<p>VGG-19比VGG-16多了3层conv2d</p>
+<p><img src="/photo/vgg/image-20200628204151177.png" alt="image-20200628204151177"></p>
+<p>3：文字回答：读完该论文，对你的启发点有哪些？</p>
+<ul>
+<li>
+<p>2个3x3的卷积核 和1 个5x5的卷积核感受野一样，但是参数要少了$(5^2-2\times 3^2)/5^2=28%$</p>
+<p>3个3x3的卷积核 和1 个7x7的卷积核感受野一样, 参数少了44%</p>
+</li>
+<li>
+<p>因此，堆叠小卷积核，可以减少参数，并且加深网络可以拟合的更好，但是过于深之后就没有提升了。这是因为网络过深之后，会面临梯度消失的问题，后面的Resnet可以解决这个问题</p>
+</li>
+<li>
+<p>使用稠密测试(Dense test) 取代FC，比FC更加灵活。因为FC的输入参数是固定的，也是后面FCN的思路</p>
+</li>
+<li>
+<p>尺度扰动对训练和测试都有帮助</p>
+</li>
+<li>
+<p>物体尺度不一的时候，采用多尺度训练可以提高精度</p>
+</li>
+<li>
+<p>在transform.Resize中，transform.Resize((256))和transform.Resize((256,256))的区别是，前者将短边裁剪到256，长边按比例减少；后者是将两个边同时缩放到（256,256）</p>
+</li>
+</ul>
+<p>4：代码实现：从网上找一张图片，执行vgg16，观察top5输出的类别，并将输出结果截图进行打卡。</p>
+<p><img src="/photo/vgg/image-20200628201149593.png" alt="image-20200628201149593"></p>
+<p>5.文字：本篇论文的学习笔记及总结</p>
+<p>VGG的思路，用小卷积核代替大卷积核，并且将网络做深。</p>
+<p>D和E的效果最好，VGG-16和VGG-19</p>
+<p><img src="/photo/vgg/image-20200628211022891.png" alt="image-20200628211022891"></p>
+<p>可以用Xavier做网络初始化</p>
+<p>在训练的时候，使用两种方法，固定图片尺寸和多尺度图片尺寸训练。固定尺寸可以把尺寸S设置为256或者384；多尺寸的话，随机选取S=[256,512]之间的某个值</p>
+<p>测试的时候，图片的尺寸Q不一定等于S(见后面表格)，可以使用multi-crop和dense两种测试方法。multi-crop就是在原图上进行裁剪，最多生成： $5\times5\times2\times3=150$张图片，5x5是H和W的grid，2是H和W都有2种选择，3是3种scale，见图表</p>
+<p><img src="/photo/vgg/image-20200628212852367.png" alt="image-20200628212852367"></p>
+<p><img src="/photo/vgg/image-20200628212907609.png" alt="image-20200628212907609"></p>
+<p>当multi-crop和dense测试方法融合的时候，错误率能够下降</p>
+<p><img src="/photo/vgg/image-20200628212935922.png" alt="image-20200628212935922"></p>
+<p>当不同模型融合的时候，错误率能够下降</p>
+<p><img src="/photo/vgg/image-20200628213024712.png" alt="image-20200628213024712"></p>
+<p><strong>相关链接</strong>：</p>
+<p>预训练权重下载</p>
+<p>&lsquo;vgg11&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg11-bbd30ac9.pth',">https://download.pytorch.org/models/vgg11-bbd30ac9.pth',</a></p>
+<p>&lsquo;vgg13&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg13-c768596a.pth',">https://download.pytorch.org/models/vgg13-c768596a.pth',</a></p>
+<p>&lsquo;vgg16&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg16-397923af.pth',">https://download.pytorch.org/models/vgg16-397923af.pth',</a></p>
+<p>&lsquo;vgg19&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg19-dcbb9e9d.pth',">https://download.pytorch.org/models/vgg19-dcbb9e9d.pth',</a></p>
+<p>&lsquo;vgg11_bn&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg11_bn-6002323d.pth',">https://download.pytorch.org/models/vgg11_bn-6002323d.pth',</a></p>
+<p>&lsquo;vgg13_bn&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg13_bn-abd245e5.pth',">https://download.pytorch.org/models/vgg13_bn-abd245e5.pth',</a></p>
+<p>&lsquo;vgg16_bn&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg16_bn-6c64b313.pth',">https://download.pytorch.org/models/vgg16_bn-6c64b313.pth',</a></p>
+<p>&lsquo;vgg19_bn&rsquo;: &lsquo;<a href="https://download.pytorch.org/models/vgg19_bn-c79401a0.pth',">https://download.pytorch.org/models/vgg19_bn-c79401a0.pth',</a></p>
+<p>猫狗数据集：&lsquo;<a href="https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data'">https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data'</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Guangyu </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://gm3g11.github.io/2020/vgg-research/>https://gm3g11.github.io/2020/vgg-research/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                @copyright Guangyu Meng
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://gm3g11.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://gm3g11.github.io/">Guangyu</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

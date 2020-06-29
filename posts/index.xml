@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Guangyu&#39;s Blog</title>
+    <link>https://gm3g11.github.io/posts/</link>
+    <description>Recent content in Posts on Guangyu&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 28 Jun 2020 23:58:36 -0500</lastBuildDate>
+    
+	<atom:link href="https://gm3g11.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VGG Research</title>
+      <link>https://gm3g11.github.io/2020/vgg-research/</link>
+      <pubDate>Sun, 28 Jun 2020 23:58:36 -0500</pubDate>
+      
+      <guid>https://gm3g11.github.io/2020/vgg-research/</guid>
+      <description>Research on &amp;ldquo;Very deep convolutional networks for large-scale image recognition &amp;quot; (VGG) 作业内容： 1：文字回答：VGG中3个33卷积相对于1个77卷积，在参数上较少了百分之多少？（假设输入和输出通道数均为</description>
+    </item>
+    
+  </channel>
+</rss>
