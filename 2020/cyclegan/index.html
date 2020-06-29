@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="Guangyu">
+  
+  
+  
+  <link rel="prev" href="https://gm3g11.github.io/2020/literature-review-on-esrgan-enhanced-super-resolution-generative-adversarial-networks/" />
+  
+  <link rel="canonical" href="https://gm3g11.github.io/2020/cyclegan/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Literature review on Cycle GAN | Guangyu&#39;s blog
+       
+  </title>
+  <meta name="title" content="Literature review on Cycle GAN | Guangyu&#39;s blog">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/gm3g11.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "Literature review on Cycle GAN",
+    "headline" : "Literature review on Cycle GAN",
+    "description" : "CycleGAN \u0026ndash; From paper \u0026quot; Unpaired Image-to-Image Translation with CycleGAN\u0026rdquo;[1] 1.Why we need Unpaired Image to Image Translation Traditionally, Image translation needs a mapping between an input image and output aligned image pairs, for example:\nThis method costs lots of effort to collect pairs and sometimes it may be impossible in some scenarios.\nTherefore, we need unpaired Image translation to solve this problem and the CycleGan model is a powerful weapon to achieve this goal.",
+    "inLanguage" : "zh-cn",
+    "author" : "Guangyu",
+    "creator" : "Guangyu",
+    "publisher": "Guangyu",
+    "accountablePerson" : "Guangyu",
+    "copyrightHolder" : "Guangyu",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-06-28 23:58:36 -0500 CDT",
+    "dateModified" : "2020-06-28 23:58:36 -0500 CDT",
+    "url" : "https:\/\/gm3g11.github.io\/2020\/cyclegan\/",
+    "wordCount" : "1458",
+    "keywords" : [  "Guangyu\u0027s blog"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://gm3g11.github.io/">Guangyu&#39;s blog</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">blog</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://gm3g11.github.io/">Guangyu&#39;s blog</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">blog</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Literature review on Cycle GAN</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://gm3g11.github.io/" rel="author">Guangyu</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-06-28 itemprop="datePublished">June 28, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="cyclegan">CycleGAN</h1>
+<h5 id="---from-paper--unpaired-image-to-image-translation-with-cyclegan1">&ndash; From paper &quot; Unpaired Image-to-Image Translation with CycleGAN&rdquo;[1]</h5>
+<h3 id="1why-we-need-unpaired-image-to-image-translation">1.Why we need Unpaired Image to Image Translation</h3>
+<p>Traditionally, Image translation needs a mapping between an input image and output aligned image pairs, for example:</p>
+<p><img src="/photo/cyclegan/image-20200118104621203.png" alt="image-20200118104621203"></p>
+<p>This method costs lots of effort to collect pairs and sometimes it may be impossible in some scenarios.</p>
+<p>Therefore, we need unpaired Image translation to solve this problem and the CycleGan model is a powerful weapon to achieve this goal.</p>
+<h3 id="2-network-architecture-for-the-cyclegan-and-relative-code">2. Network architecture for the CycleGAN and relative code</h3>
+<p><img src="/photo/cyclegan/image-20200118191407761.png" alt="image-20200118191407761"></p>
+<p>(a) The whole structure contains two Generators(G: X to Y , F: Y to X ), and two Discriminators $D_Y$ and $D_X$.</p>
+<p>(b) $D_Y$  needs to distinguish G(x) from Y. $D_X$ needs to distinguish F(Y) from X.</p>
+<p>​	 G(X) needs to as much similar to Y as possible, and same task for F(Y).</p>
+<h4 id="specifically-here-is-the-implementation-of-generator-and-discriminator">Specifically, here is the implementation of generator and discriminator:</h4>
+<ul>
+<li>
+<h5 id="generator-structure">Generator structure:</h5>
+<p>The main idea is using Residual Networking [2]:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ResidualBlock</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, in_features):
+        super(ResidualBlock, self)<span style="color:#f92672">.</span>__init__()
+  
+        conv_block <span style="color:#f92672">=</span> [  nn<span style="color:#f92672">.</span>ReflectionPad2d(<span style="color:#ae81ff">1</span>),
+                        nn<span style="color:#f92672">.</span>Conv2d(in_features, in_features, <span style="color:#ae81ff">3</span>),
+                        nn<span style="color:#f92672">.</span>InstanceNorm2d(in_features),
+                        nn<span style="color:#f92672">.</span>ReLU(inplace<span style="color:#f92672">=</span>True),
+                        nn<span style="color:#f92672">.</span>ReflectionPad2d(<span style="color:#ae81ff">1</span>),
+                        nn<span style="color:#f92672">.</span>Conv2d(in_features, in_features, <span style="color:#ae81ff">3</span>),
+                        nn<span style="color:#f92672">.</span>InstanceNorm2d(in_features)  ]
+  
+        self<span style="color:#f92672">.</span>conv_block <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sequential(<span style="color:#f92672">*</span>conv_block)
+  
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+        <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>conv_block(x)
+</code></pre></div><p>And then the generator builds up based on residual network. This network contains two stride-2 convolutions, nine residual blocks and two convolutions [2] :</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Generator</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, input_nc, output_nc, n_residual_blocks<span style="color:#f92672">=</span><span style="color:#ae81ff">9</span>):
+        super(Generator, self)<span style="color:#f92672">.</span>__init__()
+  
+        <span style="color:#75715e"># Initial convolution block       </span>
+        model <span style="color:#f92672">=</span> [   nn<span style="color:#f92672">.</span>ReflectionPad2d(<span style="color:#ae81ff">3</span>),
+                    nn<span style="color:#f92672">.</span>Conv2d(input_nc, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">7</span>),
+                    nn<span style="color:#f92672">.</span>InstanceNorm2d(<span style="color:#ae81ff">64</span>),
+                    nn<span style="color:#f92672">.</span>ReLU(inplace<span style="color:#f92672">=</span>True) ]
+  
+        <span style="color:#75715e"># Downsampling</span>
+        in_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>
+        out_features <span style="color:#f92672">=</span> in_features<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+            model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>Conv2d(in_features, out_features, <span style="color:#ae81ff">3</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                        nn<span style="color:#f92672">.</span>InstanceNorm2d(out_features),
+                        nn<span style="color:#f92672">.</span>ReLU(inplace<span style="color:#f92672">=</span>True) ]
+            in_features <span style="color:#f92672">=</span> out_features
+            out_features <span style="color:#f92672">=</span> in_features<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+  
+        <span style="color:#75715e"># Residual blocks</span>
+        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n_residual_blocks):
+            model <span style="color:#f92672">+=</span> [ResidualBlock(in_features)]
+  
+        <span style="color:#75715e"># Upsampling</span>
+        out_features <span style="color:#f92672">=</span> in_features<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+        <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>):
+            model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>ConvTranspose2d(in_features, out_features, <span style="color:#ae81ff">3</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, 		padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, output_padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                        nn<span style="color:#f92672">.</span>InstanceNorm2d(out_features),
+                        nn<span style="color:#f92672">.</span>ReLU(inplace<span style="color:#f92672">=</span>True) ]
+            in_features <span style="color:#f92672">=</span> out_features
+            out_features <span style="color:#f92672">=</span> in_features<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>
+  
+        <span style="color:#75715e"># Output layer</span>
+        model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>ReflectionPad2d(<span style="color:#ae81ff">3</span>),
+                    nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">64</span>, output_nc, <span style="color:#ae81ff">7</span>),
+                    nn<span style="color:#f92672">.</span>Tanh() ]
+  
+        self<span style="color:#f92672">.</span>model <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sequential(<span style="color:#f92672">*</span>model)
+  
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>model(x)
+</code></pre></div></li>
+<li>
+<h5 id="discriminator-structure">Discriminator structure:</h5>
+<p>For the discriminator, PatchGANs is used [2]:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Discriminator</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, input_nc):
+        super(Discriminator, self)<span style="color:#f92672">.</span>__init__()
+  
+        <span style="color:#75715e"># A bunch of convolutions one after another</span>
+        model <span style="color:#f92672">=</span> [   nn<span style="color:#f92672">.</span>Conv2d(input_nc, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">4</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                    nn<span style="color:#f92672">.</span>LeakyReLU(<span style="color:#ae81ff">0.2</span>, inplace<span style="color:#f92672">=</span>True) ]
+  
+        model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">4</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                    nn<span style="color:#f92672">.</span>InstanceNorm2d(<span style="color:#ae81ff">128</span>), 
+                    nn<span style="color:#f92672">.</span>LeakyReLU(<span style="color:#ae81ff">0.2</span>, inplace<span style="color:#f92672">=</span>True) ]
+  
+        model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">4</span>, stride<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                    nn<span style="color:#f92672">.</span>InstanceNorm2d(<span style="color:#ae81ff">256</span>), 
+                    nn<span style="color:#f92672">.</span>LeakyReLU(<span style="color:#ae81ff">0.2</span>, inplace<span style="color:#f92672">=</span>True) ]
+  
+        model <span style="color:#f92672">+=</span> [  nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">4</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>),
+                    nn<span style="color:#f92672">.</span>InstanceNorm2d(<span style="color:#ae81ff">512</span>), 
+                    nn<span style="color:#f92672">.</span>LeakyReLU(<span style="color:#ae81ff">0.2</span>, inplace<span style="color:#f92672">=</span>True) ]
+  
+        <span style="color:#75715e"># FCN classification layer</span>
+        model <span style="color:#f92672">+=</span> [nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">512</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">4</span>, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)]
+  
+        self<span style="color:#f92672">.</span>model <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sequential(<span style="color:#f92672">*</span>model)
+</code></pre></div></li>
+</ul>
+<h3 id="3-the-loss-function-and-relative-code">3. The loss function and relative code</h3>
+<h4 id="the-full-objective-is">The full objective is:</h4>
+<p>$$
+L(G,F,D_X,D_Y)=L_{GAN}(G,D_Y,X,Y)+L_{GAN}(F,D_X,Y,X)+\lambda L{cyc}(G,F)
+$$</p>
+<h5 id="here-is-the-explain-for-different-parts">Here is the explain for different parts:</h5>
+<p>a. $L_{GAN}(G,D_Y,X,Y)=E_{y\sim p_{data}(y)}[logD_Y(y)]+E_{x\sim p_{data}(x)}[log(1-D_Y(G(x))]$</p>
+<p>​	$E_{y\sim p_{data}(y)}$means the expectation of y which subjects to y probability distribution.</p>
+<p>​	$D_Y(y)$ means the discriminator networking judges  the real number y.</p>
+<p>​	$D_Y(G(x))$ means the discriminator judges the fake data which is generated by the G(x)</p>
+<p>​	As mentioned before, Generator network wants to build similarly true data while the Discriminator needs 	to distinguish fake data from real data. Therefore, this equation follows two-player minmax game:</p>
+<p>​														$ \mathop\min\limits_G \mathop\max\limits_{D{_Y}}L_{GAN}(G,D_Y,X,Y)$</p>
+<p>b. $$L_{GAN}(F,D_X,Y,X)$$ is similar as above.</p>
+<p>c. $$\lambda L{cyc}(G,F)=\lambda \times(E_{x\sim p_{data}(x)}[||F(G(x))-x||_1]+E_{y\sim p_{data}(y)}[||G(F(y))-y]||_1)$$</p>
+<p>​	In this paper, $$\lambda=10$$, $$||F(G(x))-x||_1$$ measures the Manhattan Distance between the real data $$x$$ and 	   	the $$x$$ recovery data after two generators.</p>
+<p>d. Besides, there is one technique to stabilize the model:</p>
+<p>​	In the $$L_{GAN}$$, a least-square loss is using to replace the original negative log object. In particular:</p>
+<p>​	Train the G to minimize $$E_{x\sim p_{data}(x)}[(1-D_Y(G(x))^2]$$</p>
+<p>​	Train the D to minimize $$E_{y\sim p_{data}(y)}[(D_Y(y)-1)^2]+E_{x\sim p_{data}(x)}[D(G(x))^2]$$</p>
+<h4 id="here-is-the-code-for-the-whole-loss-function-2">Here is the code for the whole loss function [2]:</h4>
+<ul>
+<li>
+<h5 id="define-three-kinds-of-loss-function">Define three kinds of loss function:</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">criterion_GAN <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>MSELoss()
+criterion_cycle <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>L1Loss()
+criterion_identity <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>L1Loss()
+</code></pre></div><p>Use square least loss and L1 loss which are same as paper.</p>
+</li>
+<li>
+<h5 id="the-whole-implementation-of-these-loss-function-will-be-introduced-in-the-next-chapter">The whole implementation of these loss function will be introduced in the next chapter.</h5>
+</li>
+</ul>
+<h3 id="4-the-training-process">4. The training process</h3>
+<p>​	The preprocessing of the images, utility and building up the plot for loss are skipped here.</p>
+<ul>
+<li>
+<h4 id="instantiate-the-networking-architecture2">Instantiate the networking architecture[2]:</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">netG_A2B <span style="color:#f92672">=</span> Generator(opt<span style="color:#f92672">.</span>input_nc, opt<span style="color:#f92672">.</span>output_nc)
+netG_B2A <span style="color:#f92672">=</span> Generator(opt<span style="color:#f92672">.</span>output_nc, opt<span style="color:#f92672">.</span>input_nc)
+netD_A <span style="color:#f92672">=</span> Discriminator(opt<span style="color:#f92672">.</span>input_nc)
+netD_B <span style="color:#f92672">=</span> Discriminator(opt<span style="color:#f92672">.</span>output_nc)
+</code></pre></div><p>netG_A2B : this is the generator to produce faked B data.</p>
+<p>netG_B2A : this is the generator to produce faked A data.</p>
+<p>netD_A: this is the discriminator to judge faked A data.</p>
+<p>netD_B: this is the discriminator to judge faked B data.</p>
+</li>
+<li>
+<h4 id="define-the-optimizer-and-learning-rate-schedulers2">Define the optimizer and Learning Rate schedulers[2]:</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">optimizer_G <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(itertools<span style="color:#f92672">.</span>chain(netG_A2B<span style="color:#f92672">.</span>parameters(), 		 netG_B2A<span style="color:#f92672">.</span>parameters()),lr<span style="color:#f92672">=</span>opt<span style="color:#f92672">.</span>lr, betas<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.999</span>))
+  
+optimizer_D_A <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(netD_A<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span>opt<span style="color:#f92672">.</span>lr, betas<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.999</span>))
+optimizer_D_B <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(netD_B<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span>opt<span style="color:#f92672">.</span>lr, betas<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.999</span>))
+  
+lr_scheduler_G <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>lr_scheduler<span style="color:#f92672">.</span>LambdaLR(optimizer_G, lr_lambda<span style="color:#f92672">=</span>LambdaLR(opt<span style="color:#f92672">.</span>n_epochs, opt<span style="color:#f92672">.</span>epoch, opt<span style="color:#f92672">.</span>decay_epoch)<span style="color:#f92672">.</span>step)
+lr_scheduler_D_A <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>lr_scheduler<span style="color:#f92672">.</span>LambdaLR(optimizer_D_A, lr_lambda<span style="color:#f92672">=</span>LambdaLR(opt<span style="color:#f92672">.</span>n_epochs, opt<span style="color:#f92672">.</span>epoch, opt<span style="color:#f92672">.</span>decay_epoch)<span style="color:#f92672">.</span>step)
+lr_scheduler_D_B <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>lr_scheduler<span style="color:#f92672">.</span>LambdaLR(optimizer_D_B, lr_lambda<span style="color:#f92672">=</span>LambdaLR(opt<span style="color:#f92672">.</span>n_epochs, opt<span style="color:#f92672">.</span>epoch, opt<span style="color:#f92672">.</span>decay_epoch)<span style="color:#f92672">.</span>step)
+</code></pre></div><p>Use Adam for the optimizer which has better performance in the convergence.</p>
+<p>The learning rate is 0.0002 and will decay after 100 epochs.</p>
+</li>
+<li>
+<h4 id="training">Training</h4>
+<p>There are two parts in the training, generator loss and discriminator loss.</p>
+<h5 id="here-is-the-analyze-of-generator-loss2">Here is the analyze of Generator loss[2]:</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">###### Training ######</span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(opt<span style="color:#f92672">.</span>epoch, opt<span style="color:#f92672">.</span>n_epochs):
+    <span style="color:#66d9ef">for</span> i, batch <span style="color:#f92672">in</span> enumerate(dataloader):
+        <span style="color:#75715e"># Set model input</span>
+        real_A <span style="color:#f92672">=</span> Variable(input_A<span style="color:#f92672">.</span>copy_(batch[<span style="color:#e6db74">&#39;A&#39;</span>]))
+        real_B <span style="color:#f92672">=</span> Variable(input_B<span style="color:#f92672">.</span>copy_(batch[<span style="color:#e6db74">&#39;B&#39;</span>]))
+  
+        <span style="color:#75715e">###### Generators A2B and B2A ######</span>
+        optimizer_G<span style="color:#f92672">.</span>zero_grad()
+  
+        <span style="color:#75715e"># Identity loss</span>
+        <span style="color:#75715e"># G_A2B(B) should equal B if real B is fed</span>
+        same_B <span style="color:#f92672">=</span> netG_A2B(real_B)
+        loss_identity_B <span style="color:#f92672">=</span> criterion_identity(same_B, real_B)<span style="color:#f92672">*</span><span style="color:#ae81ff">5.0</span>
+        <span style="color:#75715e"># G_B2A(A) should equal A if real A is fed</span>
+        same_A <span style="color:#f92672">=</span> netG_B2A(real_A)
+        loss_identity_A <span style="color:#f92672">=</span> criterion_identity(same_A, real_A)<span style="color:#f92672">*</span><span style="color:#ae81ff">5.0</span>
+  
+        <span style="color:#75715e"># GAN loss</span>
+        fake_B <span style="color:#f92672">=</span> netG_A2B(real_A)
+        pred_fake <span style="color:#f92672">=</span> netD_B(fake_B)
+        loss_GAN_A2B <span style="color:#f92672">=</span> criterion_GAN(pred_fake, target_real)
+  
+        fake_A <span style="color:#f92672">=</span> netG_B2A(real_B)
+        pred_fake <span style="color:#f92672">=</span> netD_A(fake_A)
+        loss_GAN_B2A <span style="color:#f92672">=</span> criterion_GAN(pred_fake, target_real)
+  
+        <span style="color:#75715e"># Cycle loss</span>
+        recovered_A <span style="color:#f92672">=</span> netG_B2A(fake_B)
+        loss_cycle_ABA <span style="color:#f92672">=</span> criterion_cycle(recovered_A, real_A)<span style="color:#f92672">*</span><span style="color:#ae81ff">10.0</span>
+  
+        recovered_B <span style="color:#f92672">=</span> netG_A2B(fake_A)
+        loss_cycle_BAB <span style="color:#f92672">=</span> criterion_cycle(recovered_B, real_B)<span style="color:#f92672">*</span><span style="color:#ae81ff">10.0</span>
+  
+        <span style="color:#75715e"># Total loss</span>
+        loss_G <span style="color:#f92672">=</span> loss_identity_A <span style="color:#f92672">+</span> loss_identity_B <span style="color:#f92672">+</span> loss_GAN_A2B <span style="color:#f92672">+</span> loss_GAN_B2A <span style="color:#f92672">+</span> loss_cycle_ABA <span style="color:#f92672">+</span> loss_cycle_BAB
+        loss_G<span style="color:#f92672">.</span>backward()
+          
+        optimizer_G<span style="color:#f92672">.</span>step()
+</code></pre></div><p>Here are some explanation for the Generators loss code correspond to the paper formula:</p>
+<h6 id="1-identity-loss">(1) Identity loss:</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">      same_B <span style="color:#f92672">=</span> netG_A2B(real_B) 
+      loss_identity_B <span style="color:#f92672">=</span> criterion_identity(same_B, real_B)
+</code></pre></div><p>This loss function is optional and useful in the &ldquo;Photo generation from painting&rdquo; case. (Sec 5.2 in the paper)</p>
+<p>Put real B data into the B generator and get same_B data.</p>
+<p>Measure the $$L_{identity}$$  by the generator and real data. The same_B and real_B should be identical.</p>
+<p>$$L_{identity}(G,F)=E_{y\sim p_{data}(y)}[||G(y)-y||_1]+E_{x\sim p_{data}(x)}[||F(x)-x||_1]$$</p>
+<h6 id="2-gan-loss">(2) Gan loss:</h6>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fake_B <span style="color:#f92672">=</span> netG_A2B(real_A)
+pred_fake <span style="color:#f92672">=</span> netD_B(fake_B)
+loss_GAN_A2B <span style="color:#f92672">=</span> criterion_GAN(pred_fake, target_real)  
+</code></pre></div><p>Put real A data into Generator B and get the faked B data, the target_real is 1.</p>
+<p>The code is following this function : $E_{x\sim p_{data}(x)}[(1-D_Y(G(x))^2]$</p>
+<p>(3) Cycle loss:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">  recovered_A <span style="color:#f92672">=</span> netG_B2A(fake_B)
+  loss_cycle_ABA <span style="color:#f92672">=</span> criterion_cycle(recovered_A, real_A)<span style="color:#f92672">*</span><span style="color:#ae81ff">10.0</span>
+  recovered_B <span style="color:#f92672">=</span> netG_A2B(fake_A)
+loss_cycle_BAB <span style="color:#f92672">=</span> criterion_cycle(recovered_B, real_B)<span style="color:#f92672">*</span><span style="color:#ae81ff">10.0</span>
+</code></pre></div><p>This code is correspond to the formula below:</p>
+<p>$$\lambda L{cyc}(G,F)=\lambda \times(E_{x\sim p_{data}(x)}[||F(G(x))-x||_1]+E_{y\sim p_{data}(y)}[||G(F(y))-y||_1])$$</p>
+<h6 id="4-total-loss">(4) Total loss:</h6>
+<h5 id="here-is-the-analyze-of-discriminator-loss">Here is the analyze of discriminator loss:</h5>
+<pre><code>  loss_G = loss_identity_A + loss_identity_B + loss_GAN_A2B + loss_GAN_B2A + loss_cycle_ABA + loss_cycle_BAB
+  loss_G.backward()
+  
+  optimizer_G.step()
+</code></pre>
+<pre><code>
+          ###### Discriminator A ######
+          optimizer_D_A.zero_grad()
+  
+          # Real loss
+          pred_real = netD_A(real_A)
+          loss_D_real = criterion_GAN(pred_real, target_real)
+  
+          # Fake loss
+          fake_A = fake_A_buffer.push_and_pop(fake_A)
+          pred_fake = netD_A(fake_A.detach())
+          loss_D_fake = criterion_GAN(pred_fake, target_fake)
+  
+          # Total loss
+          loss_D_A = (loss_D_real + loss_D_fake)*0.5
+          loss_D_A.backward()
+  
+          optimizer_D_A.step()
+        ###################################
+</code></pre><p>As the equation $$E_{y\sim p_{data}(y)}[(D_Y(y)-1)^2]+E_{x\sim p_{data}(x)}[D(G(x))^2]$$ 	mentions:</p>
+<h6 id="1-real-loss-">(1) Real loss :</h6>
+<p>Corresponds to the  first half equation $$E_{y\sim p_{data}(y)}[(D_Y(y)-1)^2]$$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">          <span style="color:#75715e"># Real loss</span>
+        pred_real <span style="color:#f92672">=</span> netD_A(real_A)
+      loss_D_real <span style="color:#f92672">=</span> criterion_GAN(pred_real, target_real)
+</code></pre></div><h6 id="2-fake-loss">(2) Fake loss:</h6>
+<p>Corresponds to the second half equation  $$E_{x\sim p_{data}(x)}[D(G(x))^2]$$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e"># Fake loss</span>
+    fake_A <span style="color:#f92672">=</span> fake_A_buffer<span style="color:#f92672">.</span>push_and_pop(fake_A)
+    pred_fake <span style="color:#f92672">=</span> netD_A(fake_A<span style="color:#f92672">.</span>detach())
+    loss_D_fake <span style="color:#f92672">=</span> criterion_GAN(pred_fake, target_fake)
+</code></pre></div><p>Here is one trick, the author pushes 50 images of fake_A into the fake_A_buffer and discriminates them together.  By doing this, the model oscillation could be reduced.  The variable target_fake equals to 0.</p>
+<p>Discriminator B has the similar code.</p>
+<h6 id="3--total-loss">(3)  Total loss:</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">      loss_D_A <span style="color:#f92672">=</span> (loss_D_real <span style="color:#f92672">+</span> loss_D_fake)<span style="color:#f92672">*</span><span style="color:#ae81ff">0.5</span>
+      loss_D_A<span style="color:#f92672">.</span>backward()
+      optimizer_D_A<span style="color:#f92672">.</span>step()
+</code></pre></div><h3 id="5-results">5. Results:</h3>
+<h4 id="training-results-in-different-epoch">Training results in different epoch:</h4>
+<h6 id="epoch200">epoch[200]:</h6>
+<p><img src="/photo/cyclegan/image-20200119112913684.png" alt="image-20200119112913684"></p>
+<p><img src="/photo/cyclegan/image-20200119112934739.png" alt="image-20200119112934739"></p>
+<h6 id="epoch150">epoch[150]:</h6>
+<p><img src="/photo/cyclegan/image-20200119113045212.png" alt="image-20200119113045212"></p>
+<p><img src="/photo/cyclegan/image-20200119113302360.png" alt="image-20200119113302360"></p>
+<h6 id="epoch100">epoch[100]:</h6>
+<p><img src="/photo/cyclegan/image-20200119113547567.png" alt="image-20200119113547567"></p>
+<p><img src="/photo/cyclegan/image-20200119114007826.png" alt="image-20200119114007826"></p>
+<h6 id="epoch50">epoch[50]:</h6>
+<p><img src="/photo/cyclegan/image-20200119114335738.png" alt="image-20200119114335738"></p>
+<p><img src="/photo/cyclegan/image-20200119114401974.png" alt="image-20200119114401974"></p>
+<h6 id="epoch1">epoch[1]:</h6>
+<p><img src="/photo/cyclegan/image-20200119114501230.png" alt="image-20200119114501230"></p>
+<p><img src="/photo/cyclegan/image-20200119114524701.png" alt="image-20200119114524701"></p>
+<h4 id="test-results">Test results:</h4>
+<p>From horse to faked zebra and recover:</p>
+<p><img src="/photo/cyclegan/image-20200119105636117.png" alt="image-20200119105636117"></p>
+<p>From zebra to faked horse and recover:</p>
+<p><img src="/photo/cyclegan/image-20200119105806020.png" alt="image-20200119105806020"></p>
+<h4 id="the-loss-value-is-below">The loss value is below:</h4>
+<table>
+<thead>
+<tr>
+<th>loss name</th>
+<th>D_A</th>
+<th>G_A</th>
+<th>cycle_A</th>
+<th>idt_A</th>
+<th>D_B</th>
+<th>G_B</th>
+<th>cycle_B</th>
+<th>idt_B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>epoch 1</td>
+<td>0.337</td>
+<td>0.276</td>
+<td>2.203</td>
+<td>1.196</td>
+<td>0.369</td>
+<td>0.352</td>
+<td>2.772</td>
+<td>1.171</td>
+</tr>
+<tr>
+<td>epoch 50</td>
+<td>0.258</td>
+<td>0.260</td>
+<td>0.763</td>
+<td>0.249</td>
+<td>0.171</td>
+<td>0.337</td>
+<td>0.987</td>
+<td>0.270</td>
+</tr>
+<tr>
+<td>epoch 100</td>
+<td>0.130</td>
+<td>0.277</td>
+<td>0.636</td>
+<td>0.398</td>
+<td>0.182</td>
+<td>0.272</td>
+<td>1.019</td>
+<td>0.164</td>
+</tr>
+<tr>
+<td>epoch 150</td>
+<td>0.101</td>
+<td>0.330</td>
+<td>0.733</td>
+<td>0.401</td>
+<td>0.222</td>
+<td>0.429</td>
+<td>0.601</td>
+<td>0.232</td>
+</tr>
+<tr>
+<td>epoch 200</td>
+<td>0.093</td>
+<td>0.471</td>
+<td>0.629</td>
+<td>0.183</td>
+<td>0.188</td>
+<td>0.541</td>
+<td>0.654</td>
+<td>0.168</td>
+</tr>
+</tbody>
+</table>
+<p>This result meets the requirement of two-player minmax game which the generator wants to mix up the generated data and real data whereas the discriminator needs to distinguish them.</p>
+<h3 id="6-limitations-and-further-work">6. Limitations and further work</h3>
+<ul>
+<li>
+<p>If the tasks involve color and texture changes, this method will usually success. However, if the tasks require geometric changes, they will be little successful, such as cat to dog transfiguration:</p>
+<p><img src="/photo/cyclegan/image-20200118103415449.png" alt="image-20200118103415449"></p>
+</li>
+<li>
+<p>Some interferences may also cause failures. For example, in the horse to zebra training set, the model  only trains horse and zebra cases. But it may get confused when there is a person riding on the horse:</p>
+<p><img src="/photo/cyclegan/image-20200118103655141.png" alt="image-20200118103655141"></p>
+</li>
+</ul>
+<p><em><strong>Reference</strong></em>:</p>
+<p>[1] Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks Jun-Yan Zhu∗ Taesung Park∗ Phillip Isola Alexei A. Efros Berkeley AI Research (BAIR) laboratory, UC Berkeley</p>
+<p>&ldquo;<a href="https://arxiv.org/pdf/1703.10593.pdf%22">https://arxiv.org/pdf/1703.10593.pdf&quot;</a></p>
+<p>[2] &ldquo;<a href="https://github.com/aitorzip/PyTorch-CycleGAN/blob/master/%22">https://github.com/aitorzip/PyTorch-CycleGAN/blob/master/&quot;</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>Guangyu </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://gm3g11.github.io/2020/cyclegan/>https://gm3g11.github.io/2020/cyclegan/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                @copyright Guangyu Meng
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://gm3g11.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://gm3g11.github.io/2020/literature-review-on-esrgan-enhanced-super-resolution-generative-adversarial-networks/" class="prev" rel="prev" title="Literature review on ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks"><i class="iconfont icon-left"></i>&nbsp;Literature review on ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2020 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://gm3g11.github.io/">Guangyu</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

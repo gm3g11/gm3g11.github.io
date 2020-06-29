@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Guangyu&#39;s Blog</title>
+    <title>Posts on Guangyu&#39;s blog</title>
     <link>https://gm3g11.github.io/posts/</link>
-    <description>Recent content in Posts on Guangyu&#39;s Blog</description>
+    <description>Recent content in Posts on Guangyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 28 Jun 2020 23:58:36 -0500</lastBuildDate>
     
 	<atom:link href="https://gm3g11.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Literature review on Cycle GAN</title>
+      <link>https://gm3g11.github.io/2020/cyclegan/</link>
+      <pubDate>Sun, 28 Jun 2020 23:58:36 -0500</pubDate>
+      
+      <guid>https://gm3g11.github.io/2020/cyclegan/</guid>
+      <description>CycleGAN &amp;ndash; From paper &amp;quot; Unpaired Image-to-Image Translation with CycleGAN&amp;rdquo;[1] 1.Why we need Unpaired Image to Image Translation Traditionally, Image translation needs a mapping between an input image and output aligned image pairs, for example:
+This method costs lots of effort to collect pairs and sometimes it may be impossible in some scenarios.
+Therefore, we need unpaired Image translation to solve this problem and the CycleGan model is a powerful weapon to achieve this goal.</description>
+    </item>
+    
+    <item>
+      <title>Literature review on ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks</title>
+      <link>https://gm3g11.github.io/2020/literature-review-on-esrgan-enhanced-super-resolution-generative-adversarial-networks/</link>
+      <pubDate>Sun, 28 Jun 2020 23:58:36 -0500</pubDate>
+      
+      <guid>https://gm3g11.github.io/2020/literature-review-on-esrgan-enhanced-super-resolution-generative-adversarial-networks/</guid>
+      <description>Literature review on &amp;ldquo;ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks&amp;rdquo; &amp;ldquo;https://arxiv.org/pdf/1809.00219.pdf&amp;quot;
+1.Abstract: To be solved issue： The hallucinated details are often accompanied with unpleasant artifacts
+Method: In particular, we introduce the Residual-in-Residual Dense Block (RRDB) without batch normalization as the basic network building unit. Moreover, we borrow the idea from relativistic GAN [2] to let the discriminator predict relative realness instead of the absolute value. Finally, we improve the perceptual loss by using the features before activation, which could provide stronger supervision for brightness consistency and texture recovery.</description>
+    </item>
     
     <item>
       <title>VGG Research</title>
