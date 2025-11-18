@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications - Your Name</title>
+    <title>Publications - Guangyu Meng</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="nav-name">Your Name</a>
+            <a href="index.html" class="nav-name">Guangyu Meng</a>
             <ul class="nav-links">
                 <li><a href="index.html">About</a></li>
                 <li><a href="publications.html" class="active">Publications</a></li>
@@ -21,30 +21,67 @@
     <div class="container">
         <div class="page-header">
             <h1>Publications</h1>
-            <p class="subtitle">Selected publications and preprints</p>
+            <p class="subtitle">For the most up-to-date list, please see my <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar profile</a></p>
         </div>
 
         <section>
+            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Under Review</h2>
+
+            <article class="publication">
+                <h3>VTRL-Med: Vision-Topology Reinforced Learning for Medical Image Clustering</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Pengfei Gu, John P. Lalor, Peixian Liang, Erin W. Chambers, Danny Z. Chen</p>
+                <p class="venue">Under review at CVPR 2026</p>
+                <p>A novel visual-structural and topology-aware framework that achieves state-of-the-art performance with 81.51% average accuracy across 13 medical benchmarks, representing a 4.48% improvement over existing baselines while nearly matching supervised methods in a fully unsupervised setting. The framework adapts SAM with mask-based structural priors and persistent homology features to enable anatomically consistent clustering.</p>
+                <div class="links">
+                    <a href="#" target="_blank">[PDF]</a>
+                    <a href="#" target="_blank">[arXiv]</a>
+                    <a href="#" target="_blank">[Code]</a>
+                </div>
+            </article>
+
+            <article class="publication">
+                <h3>TopoCL: Topology-Enhanced Contrastive Learning for Medical Image Analysis</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Pengfei Gu, John P. Lalor, Peixian Liang, Erin W. Chambers, Danny Z. Chen</p>
+                <p class="venue">Under review at CVPR 2026</p>
+                <p>A universal framework that demonstrates consistent accuracy improvements averaging +3.26% with strong statistical significance (80% of comparisons with p<0.001) across five state-of-the-art contrastive learning methods (SimCLR, MoCo-v3, BYOL, DINO, and Barlow Twins) on five medical imaging datasets. Features topology-aware augmentations, a Hierarchical Topology Encoder, and an adaptive mixture-of-experts fusion module.</p>
+                <div class="links">
+                    <a href="#" target="_blank">[PDF]</a>
+                    <a href="#" target="_blank">[arXiv]</a>
+                    <a href="#" target="_blank">[Code]</a>
+                </div>
+            </article>
+
+            <article class="publication">
+                <h3>A Stable and Theoretically Grounded Gromov-Wasserstein Distance for Reeb Graph Comparison using Persistence Images</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Erin W. Chambers</p>
+                <p class="venue">Under review at Symposium on Computational Geometry (SOCG) 2026</p>
+                <p>A stable algorithmic framework for comparing Reeb graphs using Gromov-Wasserstein distance with persistence images, accompanied by rigorous theoretical stability proofs under scalar field perturbations. This work provides theoretical guarantees for topological shape analysis and comparison in computational geometry applications.</p>
+                <div class="links">
+                    <a href="https://arxiv.org/abs/2507.01171" target="_blank">[arXiv]</a>
+                </div>
+            </article>
+        </section>
+
+        <section style="margin-top: 3rem;">
             <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Journal Articles</h2>
 
             <article class="publication">
-                <h3>Title of Your Most Recent Publication</h3>
-                <p class="authors">Author 1, <strong>Your Name</strong>, Author 3</p>
-                <p class="venue">Journal Name, Volume(Issue), Pages, Year</p>
-                <p>Brief description of the paper and its main contributions. This could include the research question, methodology, and key findings.</p>
+                <h3>Psychology-based Unified Dynamic Framework for Curriculum Learning</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Qingkai Zeng, John P. Lalor, Hong Yu</p>
+                <p class="venue">Computational Linguistics Journal, 2025</p>
+                <p>A psychology-based curriculum learning framework that applies Item Response Theory to artificial crowds for model-independent difficulty quantification. Demonstrated effectiveness on both classification and generation tasks, achieving 69.68% faster training and 75.48% speedup over state-of-the-art methods on large language model fine-tuning.</p>
                 <div class="links">
-                    <a href="#" target="_blank">[PDF]</a>
+                    <a href="https://arxiv.org/abs/2408.05326" target="_blank">[arXiv]</a>
                     <a href="#" target="_blank">[DOI]</a>
-                    <a href="#" target="_blank">[Code]</a>
-                    <a href="#" target="_blank">[Slides]</a>
+                    <a href="https://github.com/nd-ball/cl-irt/tree/guangyu" target="_blank">[Code]</a>
                 </div>
             </article>
 
             <article class="publication">
-                <h3>Another Publication Title Goes Here</h3>
-                <p class="authors"><strong>Your Name</strong>, Co-author 1, Co-author 2</p>
-                <p class="venue">Conference Proceedings, Year</p>
-                <p>Brief abstract or summary of this publication's main contributions.</p>
+                <h3>Cell Instance Segmentation: The Devil Is in the Boundaries</h3>
+                <p class="authors">Peixian Liang, Yifan Ding, Yizhe Zhang, Jianxu Chen, Hao Zheng, Hongxiao Wang, Yejia Zhang, <strong>Guangyu Meng</strong>, Tim Weninger, Michael Niemier, X. Sharon Hu, Danny Z. Chen</p>
+                <p class="venue">IEEE Transactions on Medical Imaging (TMI), 2025</p>
+                <p>Novel approach for cell instance segmentation focusing on boundary detection and refinement in medical imaging applications.</p>
                 <div class="links">
                     <a href="#" target="_blank">[PDF]</a>
                     <a href="#" target="_blank">[DOI]</a>
@@ -52,50 +89,35 @@
             </article>
 
             <article class="publication">
-                <h3>A Third Example Publication</h3>
-                <p class="authors">Collaborator 1, <strong>Your Name</strong></p>
-                <p class="venue">Journal of Example Research, Vol. 10, No. 2, pp. 123-145, 2024</p>
-                <p>Description of the research and its significance to your field.</p>
+                <h3>Efficient Approximation of Earth Mover's Distance Based on Nearest Neighbor Search</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Ruyu Zhou, Liu Liu, Peixian Liang, Fang Liu, Danny Z. Chen, Michael Niemier, X. Sharon Hu</p>
+                <p class="venue">IEEE Transactions on Multimedia (TMM), 2025</p>
+                <p>A GPU-accelerated Nearest Neighbor Search approximation algorithm achieving 44× to 135× speedup over exact Earth Mover's Distance computation while maintaining superior accuracy (91.88% on 20news, 93.24% on Amazon reviews). Includes comprehensive theoretical analysis of time complexity and error bounds, enabling scalable optimal transport for large-scale computer vision applications.</p>
                 <div class="links">
-                    <a href="#" target="_blank">[PDF]</a>
+                    <a href="https://arxiv.org/abs/2401.07378" target="_blank">[arXiv]</a>
                     <a href="#" target="_blank">[DOI]</a>
-                    <a href="#" target="_blank">[arXiv]</a>
                 </div>
             </article>
         </section>
 
         <section style="margin-top: 3rem;">
-            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Preprints & Working Papers</h2>
+            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Conference Papers</h2>
 
             <article class="publication">
-                <h3>Title of Working Paper or Preprint</h3>
-                <p class="authors"><strong>Your Name</strong>, Collaborator</p>
-                <p class="venue">Under Review / In Preparation, Year</p>
-                <p>Summary of ongoing research or papers under review.</p>
-                <div class="links">
-                    <a href="#" target="_blank">[arXiv]</a>
-                    <a href="#" target="_blank">[SSRN]</a>
-                </div>
-            </article>
-        </section>
-
-        <section style="margin-top: 3rem;">
-            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Theses & Dissertations</h2>
-
-            <article class="publication">
-                <h3>Your Dissertation Title</h3>
-                <p class="authors"><strong>Your Name</strong></p>
-                <p class="venue">Ph.D. Dissertation, University Name, Year</p>
-                <p>Brief description of your dissertation research.</p>
+                <h3>Early Forecasting of the Impact of Traffic Accidents Using a Single Shot Observation</h3>
+                <p class="authors"><strong>Guangyu Meng</strong>, Qisheng Jiang, Kaiqun Fu, Beiyu Lin, Chang-Tien Lu, Zhiqian Chen</p>
+                <p class="venue">SIAM International Conference on Data Mining (SDM), 2022</p>
+                <p>Novel graph-based approach for predicting traffic accident impact using single snapshot observations, leveraging abrupt signal modeling in graph neural networks.</p>
                 <div class="links">
                     <a href="#" target="_blank">[PDF]</a>
+                    <a href="#" target="_blank">[DOI]</a>
                 </div>
             </article>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p>&copy; 2025 Guangyu Meng. All rights reserved.</p>
     </footer>
 </body>
 </html>
